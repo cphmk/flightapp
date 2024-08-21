@@ -28,20 +28,20 @@ public class FlightReader {
         try {
             List<DTOs.FlightDTO> flightList = flightReader.getFlightsFromFile("flights.json");
             List<DTOs.FlightInfo> flightInfoList = flightReader.getFlightInfoDetails(flightList);
-/*
+
             long average = (long) flightInfoList.stream()
-                    .filter(flightInfo -> flightInfo.getAirline() != null ? flightInfo.getAirline().equals("Lufthansa") : false)
+                    .filter(flightInfo2 -> flightInfo2.getAirline() != null ? flightInfo2.getAirline().equals("Lufthansa") : false)
                     .mapToLong(flightInfo -> flightInfo.getDuration().toMinutes())
                     .average()
                     .orElse(0.0);
-*/
+
             long fulltime = (long) flightInfoList.stream()
                     .filter(flightInfo -> flightInfo.getAirline() != null ? flightInfo.getAirline().equals("Lufthansa") : false)
                     .mapToLong(flightInfo -> flightInfo.getDuration().toMinutes())
                     .sum();
 
 
-            //System.out.println("Average " + average);
+            System.out.println("Average " + average);
             System.out.println("Full time " + fulltime);
         } catch (IOException e) {
             e.printStackTrace();
